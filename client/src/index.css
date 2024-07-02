@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .header {
+    @apply text-header-color font-header text-header leading-header;
+  }
+
+  .body-text {
+    @apply font-body-text text-link text-body-text leading-body-text;
+  }
+
+  .monospace {
+    @apply font-monospace text-code-primary font-bold text-monospace;
+  }
+
+  .link-monospace {
+    @apply font-monospace font-bold text-link-monospace;
+  }
+}
