@@ -1,26 +1,25 @@
-const {
-  parseCommit,
-  parsePatch,
-  transformCommitData,
-} = require("../helper/utils");
+const { parseCommit, transformCommitData } = require("../helper/utils");
 const commitData = require("../mockData");
 
 const router = require("express").Router();
 const API_URL = "https://api.github.com/repos/";
 
 const commitInfoCache = {};
-const commitDiffCache = {};
 
 router.get("/:owner/:repository/commits/:oid", async (req, res) => {
   try {
     const { owner, repository, oid } = req.params;
-    // const response = await fetch(
-    //   API_URL + `${owner}/${repository}/commits/${oid}`
-    // );
+    let data;
+    if (!commitInfoCache[oid]) {
+      const response = await fetch(
+        API_URL + `${owner}/${repository}/commits/${oid}`
+      );
 
-    // const data = await response.json();
-    const data = commitData;
-    commitInfoCache[oid] = data;
+      data = await response.json();
+      commitInfoCache[oid] = data;
+    } else {
+      data = commitInfoCache[oid];
+    }
     const newData = parseCommit(data);
     res.status(200).json([...newData]);
   } catch (error) {
