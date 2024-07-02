@@ -1,3 +1,5 @@
+import { formatDateDifference } from "../utils/converter";
+
 /* eslint-disable react/prop-types */
 const Header = ({ commit }) => {
   return (
@@ -17,7 +19,7 @@ const Header = ({ commit }) => {
                 <span className="text-body font-[700]">
                   {commit.author.name}
                 </span>{" "}
-                {commit.author.date}
+                {formatDateDifference(commit.author.date)}
               </p>
               <p className="text-body text-body-text">
                 This is body text. Lorem ipsum dolor sit amet, consectetur
@@ -25,21 +27,25 @@ const Header = ({ commit }) => {
                 volutpat maecenas amet.
               </p>
             </div>
-            {commit.author.date !== commit.committer.date && (
-              <p className="text-muted text-body-text">
-                Committed by{" "}
-                <span className="font-semibold">{commit.committer.name}</span>{" "}
-                {commit.committer.date}
-              </p>
-            )}
           </div>
           <div className="flex mt-4 flex-col w-[45%]">
+            <div className="flex text-body-text font-monospace justify-end">
+              {(commit.author.date !== commit.committer.date ||
+                commit.author.name !== commit.committer.name) && (
+                <p className="text-muted text-body-text">
+                  Committed by{" "}
+                  <span className="font-semibold">{commit.committer.name}</span>{" "}
+                  {formatDateDifference(commit.committer.date)}
+                </p>
+              )}
+            </div>
+
             <div className="flex text-body-text font-monospace justify-end">
               <p className="text-muted  ">Commit</p>
               <p className="text-body ml-1"> {commit.oid}</p>
             </div>
             <div className="flex text-link-monospace font-monospace justify-end">
-              <p className="text-muted" >Parent</p>
+              <p className="text-muted">Parent</p>
 
               {commit.parents.map((parent) => (
                 <p
