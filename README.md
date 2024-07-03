@@ -2,9 +2,9 @@
 
 ## Project Structure
 
-.
-├── client
-└── server
+- We have 2 folders `client` and `server`
+- The `client` directory contains the front-end code for the user interface (UI).
+- The `server` directory contains the back-end code for the server.
 
 ## Prerequisites
 
