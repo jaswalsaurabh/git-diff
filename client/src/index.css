@@ -12,7 +12,7 @@
   }
 
   .monospace {
-    @apply font-monospace text-code-primary font-bold text-monospace;
+    @apply font-monospace  font-bold text-monospace;
   }
 
   .link-monospace {
