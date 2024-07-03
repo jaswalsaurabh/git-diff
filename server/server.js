@@ -8,7 +8,7 @@ const PORT = 3001;
 
 app.use(cors());
 
-app.use("/repositories", router);
+app.use(router);
 
 app.listen(PORT, () => {
   console.log("server started at port ", PORT);
