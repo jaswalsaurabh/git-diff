@@ -23,7 +23,10 @@ const DiffPage = () => {
           })
           .catch((error) => console.error("Error fetching diff data:", error));
       })
-      .catch((error) => console.error("Error fetching commit data:", error));
+      .catch((error) => {
+        setCommit([]);
+        console.error("Error fetching commit data:", error);
+      });
   }, []);
 
   if (!commit)

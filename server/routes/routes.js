@@ -15,7 +15,7 @@ router.get('/',(req,res)=>{
   }
 })
 
-router.get("repositories/:owner/:repository/commits/:oid", async (req, res) => {
+router.get("/repositories/:owner/:repository/commits/:oid", async (req, res) => {
   try {
     const { owner, repository, oid } = req.params;
     let data;
@@ -40,7 +40,7 @@ router.get("repositories/:owner/:repository/commits/:oid", async (req, res) => {
   }
 });
 
-router.get("repositories/:owner/:repository/commits/:oid/diff", async (req, res) => {
+router.get("/repositories/:owner/:repository/commits/:oid/diff", async (req, res) => {
   try {
     const { oid } = req.params;
     const commitData = commitInfoCache[oid];
