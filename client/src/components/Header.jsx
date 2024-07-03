@@ -10,8 +10,8 @@ const Header = ({ commit }) => {
           alt="Author Avatar"
           className="w-12 h-12 rounded-full mr-[.5rem]"
         />
-        <div className="flex w-full justify-between">
-          <div className="flex w-[55%] justify-between items-start">
+        <div className="flex flex-col w-full justify-between md:flex-row">
+          <div className="flex w-[50%] justify-between items-start">
             <div>
               <h2 className="header">{commit.message}</h2>
               <p className="text-muted text-body-text">
@@ -21,14 +21,14 @@ const Header = ({ commit }) => {
                 </span>{" "}
                 {formatDateDifference(commit.author.date)}
               </p>
-              <p className="text-body text-body-text">
+              {/* <p className="text-body text-body-text">
                 This is body text. Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit. Eget ipsum massa egestas id pellentesque
                 volutpat maecenas amet.
-              </p>
+              </p> */}
             </div>
           </div>
-          <div className="flex mt-4 flex-col w-[45%]">
+          <div className="flex mt-4 flex-col w-[50%]">
             <div className="flex text-body-text font-monospace justify-end">
               {(commit.author.date !== commit.committer.date ||
                 commit.author.name !== commit.committer.name) && (

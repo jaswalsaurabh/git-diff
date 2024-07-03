@@ -9,7 +9,6 @@ const DiffPage = () => {
   const path = useParams();
   const { oid, repository, owner } = path;
 
-  console.log("this is path", path);
   const API_URL = "http://localhost:3001/repositories/";
 
   useEffect(() => {

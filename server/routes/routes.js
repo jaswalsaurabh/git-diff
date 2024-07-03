@@ -10,16 +10,20 @@ router.get("/:owner/:repository/commits/:oid", async (req, res) => {
   try {
     const { owner, repository, oid } = req.params;
     let data;
-    if (!commitInfoCache[oid]) {
-      const response = await fetch(
-        API_URL + `${owner}/${repository}/commits/${oid}`
-      );
+    // if (!commitInfoCache[oid]) {
+    //   const response = await fetch(
+    //     API_URL + `${owner}/${repository}/commits/${oid}`
+    //   );
 
-      data = await response.json();
-      commitInfoCache[oid] = data;
-    } else {
-      data = commitInfoCache[oid];
-    }
+    //   data = await response.json();
+    //   commitInfoCache[oid] = data;
+    // } else {
+    //   data = commitInfoCache[oid];
+    // }
+    // 
+    data = commitData;
+    commitInfoCache[oid] = data;
+    // 
     const newData = parseCommit(data);
     res.status(200).json([...newData]);
   } catch (error) {

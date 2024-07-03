@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import Down from "../assets/Down.svg";
+import Right from "../assets/right.svg";
 
 const FileChanges = ({ files }) => {
   const [isCollapsed, setisCollapsed] = useState(false);
@@ -21,7 +22,11 @@ const FileChanges = ({ files }) => {
               className="flex items-center cursor-pointer"
               onClick={() => toggleCollapse(index)}
             >
-              <img src={Down} alt="collapse" />
+              {isCollapsed[index] ? (
+                <img src={Right} alt="uncollapse" />
+              ) : (
+                <img src={Down} alt="collapse" />
+              )}
             </span>
             {change.headFile.path}
           </h3>
