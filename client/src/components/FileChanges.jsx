@@ -13,6 +13,16 @@ const FileChanges = ({ files }) => {
     }));
   };
 
+  const modified = (line) => {
+    if (line.content.startsWith("-")) {
+      return true;
+    }
+    if (line.content.startsWith("+")) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <div className="monospace">
       {files?.map((change, index) => (
@@ -37,34 +47,41 @@ const FileChanges = ({ files }) => {
                   <pre className="whitespace-pre-wrap monospace text-code-secondary">
                     {hunk.header}
                   </pre>
-                  {hunk?.lines?.map(
-                    (line, index) =>
-                      index >
-                      0 &&(
-                        <pre
-                          key={index}
-                          className={`whitespace-pre-wrap monospace text-code-primary ${
-                            line.content.startsWith("+")
-                              ? "bg-[#D8FFCB]"
-                              : line.content.startsWith("-")
-                              ? "bg-[#FFE4E9]"
-                              : ""
-                          }`}
-                        >
-                          <span className="inline-block w-20 text-code-secondary px-2">
-                            {line.baseLineNumber
-                              ? line.baseLineNumber
-                              : "  " ?? "-"}{" "}
-                            <span className="bg-[#F8FBFF]">
-                              {line.headLineNumber
-                                ? line.headLineNumber
-                                : "" ?? "-"}
-                            </span>
-                          </span>
-                          {line.content}
-                        </pre>
-                      )
-                  )}
+                  <table className="table-auto w-full text-code-primary">
+                    <tbody>
+                      {hunk?.lines?.map(
+                        (line, index) =>
+                          index > 0 && (
+                            <tr
+                              key={index}
+                              className={`whitespace-pre-wrap ${
+                                line.content.startsWith("+")
+                                  ? "bg-[#D8FFCB]"
+                                  : line.content.startsWith("-")
+                                  ? "bg-[#FFE4E9]"
+                                  : ""
+                              }`}
+                            >
+                              <td className="w-10 text-code-secondary text-center">
+                                {line.baseLineNumber
+                                  ? line.baseLineNumber
+                                  : "" ?? "-"}
+                              </td>
+                              <td
+                                className={`w-10 text-code-secondary text-center ${
+                                  modified(line) ? "" : "bg-[#F8FBFF]"
+                                } `}
+                              >
+                                {line.headLineNumber
+                                  ? line.headLineNumber
+                                  : "" ?? "-"}
+                              </td>
+                              <td>{line.content}</td>
+                            </tr>
+                          )
+                      )}
+                    </tbody>
+                  </table>
                 </div>
               ))}
             </div>
