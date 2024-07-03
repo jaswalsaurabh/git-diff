@@ -2,8 +2,9 @@
 
 ## Project Structure
 
-├── server
+.
 ├── client
+└── server
 
 ## Prerequisites
 
