@@ -31,6 +31,8 @@
     npm start
     ```
 
+The server will run on [http://localhost:3001](http://localhost:3001) by default.
+
 ### Client
 
 1. Navigate to the `client` directory:
@@ -50,6 +52,8 @@
     ```sh
     npm run dev
     ```
+
+The client will run on [http://localhost:5173](http://localhost:5173) by default.
 
 ## Notes
 
