@@ -21,6 +21,12 @@ This project involves a NodeJs server and a React application to show git diffs 
    - **Cache Expiry**: We use a time-to-live (TTL) for our cached data. After a certain period, the cache is automatically invalidated, forcing a fresh fetch from the GitHub API.
    - **Conditional Requests**: We use ETags or Last-Modified headers for conditional requests. When making a request to the GitHub API, we include the ETag from the last response. If the data has not changed, GitHub returns a 304 Not Modified status, and we use the cached data. If the data has changed, GitHub returns the new data and a new ETag.
 
+3. **Line Number Issue**
+   - **Problem**:Currently, the line numbers displayed in the UI are incremented by 1 compared to the actual line numbers in the code. This discrepancy arises because the line numbers include a header line in the displayed lines array.
+   - **Solution**
+   - Modify the logic for displaying line numbers to account for the additional header line.
+   - Ensure that line numbers start from 1 for the first line of actual code content after the header.
+
 ### Client-Side Enhancements
 
 1. **Virtualization**
