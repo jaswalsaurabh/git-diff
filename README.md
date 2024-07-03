@@ -78,11 +78,6 @@ This route provides a method to display the git diff of any commit from a public
 Use this route to:
 
 - View changes made in any commit of a public GitHub repository.
-- Facilitate code review and historical analysis of repository changes.
-
-#### Example
-
-For example, to view the git diff of commit `abc123` in the repository `myrepo` owned by `myusername`, use the following URL:
 
 #### Notes
 
