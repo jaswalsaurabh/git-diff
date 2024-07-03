@@ -25,7 +25,7 @@ This project involves a NodeJs server and a React application to show git diffs 
    - **Problem**:Currently, the line numbers displayed in the UI are incremented by 1 compared to the actual line numbers in the code. This discrepancy arises because the line numbers include a header line in the displayed lines array.
    - **Solution**
    - Modify the logic for displaying line numbers to account for the additional header line.
-   - Ensure that line numbers start from 1 for the first line of actual code content after the header.
+   - Ensure that line numbers start from header line number plus 1 for the first line of actual code content after the header.
 
 ### Client-Side Enhancements
 
