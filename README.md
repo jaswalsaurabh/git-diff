@@ -3,7 +3,7 @@
 ## Project Structure
 
 ├── server
-└── client
+├── client
 
 ## Prerequisites
 
