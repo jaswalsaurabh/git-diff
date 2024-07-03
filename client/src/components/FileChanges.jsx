@@ -16,8 +16,8 @@ const FileChanges = ({ files }) => {
   return (
     <div className="monospace">
       {files?.map((change, index) => (
-        <div key={index} className="mb-[2rem]">
-          <h3 className="flex body-text leading-[20px] mb-[0.25rem]">
+        <div key={index} className="mb-[2rem] px-2 xl:px-0">
+          <h3 className="flex body-text leading-[20px] mb-[0.25rem] break-all">
             <span
               className="flex items-center cursor-pointer"
               onClick={() => toggleCollapse(index)}
@@ -48,11 +48,15 @@ const FileChanges = ({ files }) => {
                           : ""
                       }`}
                     >
-                      <span className="inline-block w-20 text-code-secondary px-2">
+                      <span className="inline-block w-20 text-code-secondary  px-2">
                         {line.baseLineNumber
                           ? line.baseLineNumber
                           : "  " ?? "-"}{" "}
-                        {line.headLineNumber ? line.headLineNumber : "" ?? "-"}
+                        <span className="bg-[#F8FBFF]">
+                          {line.headLineNumber
+                            ? line.headLineNumber
+                            : "" ?? "-"}
+                        </span>
                       </span>
                       {line.content}
                     </pre>
